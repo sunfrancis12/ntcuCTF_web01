@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math1</title>
+</head>
+<body>
+    <h2>輸入以下答案即可拿到flag</h2>
+    1 + 1 =
+    <input type="text" id="q1"/>
+    <p id="flag"></p>
+    <button type="button" onclick="fun()">輸入</button>
+
+    <script>
+        function fun(){
+            ans = document.getElementById("q1");
+            flag = document.getElementById("flag");
+
+            if(ans.value === "2"){
+                flag.innerHTML = "falg = {asdsadsadasedgwfdw}"
+            }
+        }
+    </script>
+</body>
+</html>
