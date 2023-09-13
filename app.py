@@ -82,6 +82,22 @@ def who_flag():
         return render_template('who_correct.html') 
     else: 
         return render_template('who_wrong.html')
+    
+@app.route('/post',methods=['GET'])
+def post():
+    return render_template('post_login.html')
+
+@app.route('/post/login',methods=['GET','POST'])
+def post_login():
+    user = request.values.get('username')
+    password = request.values.get('pass')
+    
+    if user=="guest" and password == "guest":
+        return render_template("post_guest.html")
+    elif user=="admin" and password == "admin":
+        return render_template("post_admin.html")
+    
+    return "ERROR"
 
 if __name__ == '__main__':
     app.run()
