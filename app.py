@@ -71,5 +71,17 @@ def get_login():
     
     return "ERROR"
 
+@app.route('/who',methods=['GET'])
+def who():
+    return render_template('who.html')
+    
+@app.route('/who/flag',methods=['GET'])
+def who_flag():
+    data = request.user_agent.string
+    if data == 'ntcuhacker':
+        return render_template('who_correct.html') 
+    else: 
+        return render_template('who_wrong.html')
+
 if __name__ == '__main__':
     app.run()
