@@ -1,7 +1,30 @@
 <!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <h1>Hello Flask!</h1>
-    </body>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - CSS Cube Login Form</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='index/style.css')}}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<form autocomplete='off' class='form'>
+  <div class='control'>
+    <h1>
+      You should not be here.
+    </h1>
+  </div>
+  <button class='btn block-cube block-cube-hover' type='button'>
+    
+    <div class='bg'>
+      <div class='bg-inner'></div>
+    </div>
+    <div class='text' onclick="history.back()">
+      go back
+    </div>
+  </button>
+</form>
+<!-- partial -->
+  
+</body>
 </html>
