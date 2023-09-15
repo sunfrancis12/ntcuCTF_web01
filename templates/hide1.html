@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>math1</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='hide1.css')}}"> 
 </head>
 <body>
-    <h2 style="color:red;"> >>!!!!點擊按鈕即可拿到flag!!!!!<< </h2>
-    <button type="button" onclick="fun()">點我</button>
+    
+    <p>點擊按鈕即可拿到flag</p>
+
+    <button class="button-28" type="button" onclick="fun()" >點我</button>
     <br>
     <img id= "img" style="visibility:hidden" src="https://media.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif">
-    <p id="flag" hidden>flag = {asdasdsadaegfeewfewfws}</p>
+    <p id="flag" hidden>ntcuCTF{f12_start_now}</p>
 
     <script>
         function fun(){
