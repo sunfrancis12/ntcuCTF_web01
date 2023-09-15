@@ -5,21 +5,6 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
-
-#post test
-
-@app.route('/form')
-def formPage():
-    return render_template('form.html')
-
-@app.route('/submit', methods=['POST', 'GET'])
-def submit():
-    user = request.form['user']
-    if user == "sun":
-        print("post : user => ", user)
-        return "Hello sun"
-    else:
-        return "login failed :("
     
 #生命的出路(Path)
 
@@ -55,15 +40,11 @@ def hide1():
 def grab():
     return render_template('grab.html')
 
+# login flaw
+
 @app.route('/count')
 def count():
     return render_template('count.html')
-
-@app.route('/img', methods=['GET'])
-def img():
-    if 'filename' in request.args:
-        return send_file('images/' + request.args['filename'])
-    return render_template('img.html')
 
 @app.route('/flag1', methods=['POST'])
 def flag1():
@@ -75,9 +56,7 @@ def flag1():
     else:
         return "餘額不足"
 
-@app.route('/account/<name>', methods=['GET'])
-def account(name):
-    return 'Welcome {} ~ !!!'.format(name)
+#get me admin
     
 @app.route('/get',methods=['GET'])
 def get():
@@ -95,6 +74,8 @@ def get_login():
     
     return "ERROR"
 
+#你是誰?
+
 @app.route('/who',methods=['GET'])
 def who():
     return render_template('who.html')
@@ -106,6 +87,8 @@ def who_flag():
         return render_template('who_correct.html') 
     else: 
         return render_template('who_wrong.html')
+    
+# Post me Admin
     
 @app.route('/post',methods=['GET'])
 def post():
@@ -123,5 +106,30 @@ def post_login():
     
     return "ERROR"
 
+'''
+@app.route('/form')
+def formPage():
+    return render_template('form.html')
+
+@app.route('/submit', methods=['POST', 'GET'])
+def submit():
+    user = request.form['user']
+    if user == "sun":
+        print("post : user => ", user)
+        return "Hello sun"
+    else:
+        return "login failed :("
+        
+@app.route('/account/<name>', methods=['GET'])
+def account(name):
+    return 'Welcome {} ~ !!!'.format(name)
+    
+@app.route('/img', methods=['GET'])
+def img():
+    if 'filename' in request.args:
+        return send_file('images/' + request.args['filename'])
+    return render_template('img.html')
+'''
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
