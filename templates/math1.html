@@ -7,18 +7,40 @@
 </head>
 <body>
     <h2>輸入以下答案即可拿到flag</h2>
-    1 + 1 =
+    <h3>1 + 1 =</h3>
     <input type="text" id="q1"/>
-    <p id="flag"></p>
     <button type="button" onclick="fun()">輸入</button>
+    <h2 id="q2"></h2>
+    <img id= "img" style="visibility:hidden" width="200" height="60" src="https://cdn.discordapp.com/attachments/850204675232104478/1141290991719034911/image.png">
+    <br>
+    <input id="input2" style="visibility:hidden" type="text" id="q1"/>
+    <button id="button2"style="visibility:hidden" type="button" onclick="flag()">輸入</button>
+
+    <form id="form1" action="/answer" method="POST">
+        <input type="hidden" name="answer" value="correct">
+    </form>
 
     <script>
         function fun(){
             ans = document.getElementById("q1");
-            flag = document.getElementById("flag");
+            next = document.getElementById("q2");
+            input2 = document.getElementById("input2");
+            button2 = document.getElementById("button2");
 
             if(ans.value === "2"){
-                flag.innerHTML = "falg = {asdsadsadasedgwfdw}"
+                next.innerHTML = "恭喜你答對了，現在來試試這題吧"
+                document.getElementById("img").style.visibility = 'visible'
+                document.getElementById("input2").style.visibility = 'visible'
+                document.getElementById("button2").style.visibility = 'visible'
+                
+            }
+        }
+
+        function flag(){
+            ans = document.getElementById("input2");
+
+            if(ans.value ==="4"){
+                form1.submit();
             }
         }
     </script>

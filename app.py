@@ -6,21 +6,54 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/math1')
-def math1():
-    return render_template('math1.html')
-
-@app.route('/math2')
-def math2():
-    return render_template('math2.html')
-
-@app.route('/hide1')
-def hide1():
-    return render_template('hide1.html')
+#post test
 
 @app.route('/form')
 def formPage():
     return render_template('form.html')
+
+@app.route('/submit', methods=['POST', 'GET'])
+def submit():
+    user = request.form['user']
+    if user == "sun":
+        print("post : user => ", user)
+        return "Hello sun"
+    else:
+        return "login failed :("
+    
+#生命的出路(Path)
+
+@app.route('/money/honey/pocket/dollar/frustrated/happiness/dream')
+def path():
+    return render_template('way.html')
+
+#數學小學堂
+
+@app.route('/math')
+def math1():
+    return render_template('math1.html')
+
+@app.route('/answer', methods=['POST'])
+def answer():
+    ans = request.values.get('answer')
+    
+    if ans == "correct":
+        return render_template('math2.html')
+    
+    return "ERROR!!!"
+
+#f12啟動
+
+@app.route('/hide')
+def hide1():
+    return render_template('hide1.html')
+
+
+#剎那想要抓住網頁
+
+@app.route('/grab')
+def grab():
+    return render_template('grab.html')
 
 @app.route('/count')
 def count():
@@ -45,15 +78,6 @@ def flag1():
 @app.route('/account/<name>', methods=['GET'])
 def account(name):
     return 'Welcome {} ~ !!!'.format(name)
-
-@app.route('/submit', methods=['POST', 'GET'])
-def submit():
-    user = request.form['user']
-    if user == "sun":
-        print("post : user => ", user)
-        return "Hello sun"
-    else:
-        return "login failed :("
     
 @app.route('/get',methods=['GET'])
 def get():
