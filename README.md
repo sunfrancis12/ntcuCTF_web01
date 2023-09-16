@@ -16,12 +16,11 @@ starting the flask
 ```bash
 flask run
 ```
-OR run it with `python` 
-python 
+run it with `python` 
 ```bash
 python app.py
 ```
-python3
+run it with `python3` 
 ```bash
 python3 app.py
 ```
