@@ -1,4 +1,4 @@
-from flask import Flask, request,url_for,render_template ,redirect , send_file
+from flask import Flask, request,url_for,render_template ,redirect , send_file,make_response
 
 app = Flask(__name__)
 
@@ -106,24 +106,48 @@ def post_login():
     
     return "ERROR"
 
-'''
-@app.route('/form')
-def formPage():
-    return render_template('form.html')
+# cookie
 
-@app.route('/submit', methods=['POST', 'GET'])
-def submit():
-    user = request.form['user']
-    if user == "sun":
-        print("post : user => ", user)
-        return "Hello sun"
-    else:
-        return "login failed :("
-        
-@app.route('/account/<name>', methods=['GET'])
-def account(name):
-    return 'Welcome {} ~ !!!'.format(name)
+@app.route('/cookie',methods=['GET','POST'])
+def cookie():
+    return render_template('cookie.html')
+
+@app.route('/cookie/set',methods=['GET','POST'])
+def setcookie():
     
+    auth = request.cookies.get('isAdmin')
+    if auth :
+        if request.method =="POST":
+            return redirect("/cookie/admin")
+        else:
+            return redirect("/cookie/guest")
+    
+    resp = make_response(redirect("/cookie/guest"))
+    resp.set_cookie(key='isAdmin', value='false')
+       
+    return resp
+    
+@app.route('/cookie/admin',methods=['GET','POST'])
+def cookie_admin():
+    auth = request.cookies.get('isAdmin')
+    
+    if auth =="true":
+        return render_template('cookie_admin.html') 
+    else:
+        return render_template('cookie_failed.html')
+    
+@app.route('/cookie/guest',methods=['GET','POST'])
+def cookie_guest():
+    auth = request.cookies.get('isAdmin')
+    
+    if auth == "false":
+        return render_template('cookie_guest.html')
+    elif auth =="true":
+        return redirect("/cookie/admin") 
+    else:
+        return "ERROR!"
+
+'''
 @app.route('/img', methods=['GET'])
 def img():
     if 'filename' in request.args:
