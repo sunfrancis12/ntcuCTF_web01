@@ -4,17 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>math1</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='math/style.css')}}">
 </head>
 <body>
-    <h2>輸入以下答案即可拿到flag</h2>
-    <h3>1 + 1 =</h3>
-    <input type="text" id="q1"/>
-    <button type="button" onclick="fun()">輸入</button>
-    <h2 id="q2"></h2>
-    <img id= "img" style="visibility:hidden" width="200" height="60" src="https://cdn.discordapp.com/attachments/850204675232104478/1141290991719034911/image.png">
-    <br>
-    <input id="input2" style="visibility:hidden" type="text" id="q1"/>
-    <button id="button2"style="visibility:hidden" type="button" onclick="flag()">輸入</button>
+    <div class="form">
+        <div class="title">歡迎來到數學小學堂</div>
+        <div class="subtitle">請輸入以下題目的答案</div>
+        <div class="cut"></div>
+        <div class="subtitle">1 + 1 =</div>
+        <div class="input-container ic1">
+          <input id="q1" class="input" type="text" placeholder=" " />
+          <div class="cut"></div>
+          <label class="placeholder">輸入答案</label>
+        </div>
+        <button type="button" class="submit" onclick="fun()">送出答案</button>
+
+        <div id="hide" style="visibility:hidden" >
+            <div class="subtitle">很好,那麼來試試看微積分吧</div>
+            <br>
+            <img id= "img" width="300" src="https://cdn.discordapp.com/attachments/850204675232104478/1141290991719034911/image.png">
+            <div class="input-container ic2">
+            <input id="input2" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label class="placeholder">輸入答案</label>
+            </div>
+
+            <button type="submit" class="submit" onclick="flag()">送出答案</button>
+        </div>
+      </div>
 
     <form id="form1" action="/answer" method="POST">
         <input type="hidden" name="answer" value="correct">
@@ -23,26 +40,24 @@
     <script>
         function fun(){
             ans = document.getElementById("q1");
-            next = document.getElementById("q2");
-            input2 = document.getElementById("input2");
-            button2 = document.getElementById("button2");
-
+            next = document.getElementById("hide");
             if(ans.value === "2"){
-                next.innerHTML = "恭喜你答對了，現在來試試這題吧"
-                document.getElementById("img").style.visibility = 'visible'
-                document.getElementById("input2").style.visibility = 'visible'
-                document.getElementById("button2").style.visibility = 'visible'
-                
+                next.style.visibility = 'visible'
+            }else{
+                alert("答案錯誤 你腦袋還好嗎?")
             }
         }
-
         function flag(){
             ans = document.getElementById("input2");
 
             if(ans.value ==="4"){
                 form1.submit();
+            }else{
+                alert("答錯囉XD 哈哈哈 笑鼠www")
             }
         }
     </script>
 </body>
 </html>
+
+

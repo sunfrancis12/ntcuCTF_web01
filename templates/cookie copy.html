@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math1</title>
+</head>
+<body>
+    <p>領取訪客資格 ==> 
+    <button type="button" onclick="fun()">點我</button>
+    </p>
+    <h2>登入介面</h2>
+    <p>以訪客身分登入 ==> 
+    <button type="button" onclick="guest()">點我</button>
+    </p>
+    <p>以管理員身分登入 ==> 
+        <button type="button" onclick="admin()">點我</button>
+    </p>
+    <br>
+
+    <script>
+        function fun(){
+            document.cookie= 'user=welguest'
+        }
+
+        function guest(){
+            var str = "welcome guest";
+            var err = "you dont have the access!!!";
+            
+            if(document.cookie === 'user=welguest'){
+                document.write(str);
+            }else{
+                document.write(err);
+            }
+        }
+
+        function admin(){
+            var str = "welcome admin";
+            var err = "you dont have the access!!!";
+            
+            if(document.cookie === 'user=weladmin'){
+                document.write(str);
+            }else{
+                document.write(err);
+            }
+        }
+    </script>
+</body>
+</html>
