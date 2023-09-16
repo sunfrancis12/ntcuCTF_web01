@@ -1,21 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>grab</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='way.css')}}">
+  <meta charset="UTF-8">
+  <title>剎那想要抓住網頁</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" href="{{url_for('static',filename='grab/style.css')}}">
+</head>
+
+<body>
+  <html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="…">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+    body{
+        background-image: url('https://p3-tt.byteimg.com/origin/pgc-image/af64f240c8ab4659b11124f3fb74e46d?from=pc');
+        background-repeat: no-repeat; 
+        background-size: 1620px 930px;
+        background-position:200px 300px;
+        background-color: #97cae0;
+    }
+    h2{
+        font-size: 8em;
+        color: rgb(255, 255, 255);
+        text-transform: uppercase;
+        font-family: 'Quicksand';
+      }
+  </style>
 </head>
 <body>
-    
-    <p>不只網頁，讓我們抓住未來吧!</p>
-    <img src="https://p3-tt.byteimg.com/origin/pgc-image/af64f240c8ab4659b11124f3fb74e46d?from=pc">
 
-    <img style="visibility:hidden" width="0" height="0" src="/static/images/bonk.gif">
+<h2>不只要抓住網頁，抓住未來吧</h2>
+
+<form action="#" autocomplete="off">
+    <fieldset class="url">
+      <input id="url" type="text" name="url" required>
+      <label for="url"><i class="fa fa-search" aria-hidden="true"></i> Search</label>
+      <div class="after"></div>
+    </fieldset>
+    <fieldset class="enter">
+      <button></button>
+    </fieldset>
+  </form>
+  <img style="visibility:hidden" width="0" height="0" src="/static/images/bonk.gif">
     <img style="visibility:hidden" width="0" height="0" src="/static/images/giwawa.gif">
     <img style="visibility:hidden" width="0" height="0" src="/static/images/mywaifu.gif">
     <img style="visibility:hidden" width="0" height="0" src="/static/images/NTR.jpg">
     <img style="visibility:hidden" width="0" height="0" src="/static/images/vanila.gif">
     <img style="visibility:hidden" width="0" height="0" src="/static/images/text.png">
+</body>
+</html>
+  
+  
 </body>
 </html>

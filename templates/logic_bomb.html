@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>邏輯爆炸</title>
+  <link rel='stylesheet' href='https://codepen.io/uzcho_/pen/RmOWmw.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+<link rel="stylesheet" href="{{url_for('static',filename='logic/style.css')}}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="container">
+	<form>
+		<h1 style="font-size: 25px;">歡迎光臨第十代選物販賣機</h1>
+		<p style="font-size: 20px;" id="money">你的餘額:100</p>
+		<div class="field">
+			<p>買一罐汽水10元,輸入你要買的數量:</p>
+			<input id="num" type="number" placeholder="請輸入金額">
+			<p style="font-size: 20px;" id="warn"></p>
+			<button type="button" onclick="Myfunction()">點我購入</button>
+		</div>
+		<div class="field" >
+			<h1 style="font-size: 20px;" >flag的價格: 1000元</h1>
+			<button type="button" onclick="buyflag()">點我購入</button>
+		</div>
+		<p style="font-size: 20px;" id="flag"></p>
+		
+	</form>
+</div>
+
+<script>
+	var x = 100;
+  
+	function Myfunction(){
+	  var cost = document.getElementById('num');
+	  var text = document.getElementById('money');
+	  var warn = document.getElementById('warn');
+
+	  if(cost.value*10>x){
+		warn.innerHTML = '交易失敗餘額不足!'
+	  }else{
+		warn.innerHTML = '交易成功!'
+
+		x = x - cost.value*10;
+
+		text.innerHTML = `你的餘額: ${x}`
+	  }
+
+	}
+
+	function buyflag(){
+		var text = document.getElementById('flag');
+		
+		  fetch('/check', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					'money': x
+				})
+			}).then((res) => {
+				return res.text()   
+			}).then(result => {
+				text.innerHTML = result;
+			})
+		}
+	
+</script>
+
+<!-- This is not part of Pen -->
+<a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank" style="color:#000"></a>
+<!-- partial -->
+  
+</body>
+</html>

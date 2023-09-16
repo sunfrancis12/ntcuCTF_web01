@@ -40,21 +40,21 @@ def hide1():
 def grab():
     return render_template('grab.html')
 
-# login flaw
+# 邏輯炸裂
 
-@app.route('/count')
+@app.route('/logic')
 def count():
-    return render_template('count.html')
+    return render_template('logic_bomb.html')
 
-@app.route('/flag1', methods=['POST'])
+@app.route('/check', methods=['POST'])
 def flag1():
     data = request.get_json()
     money = data.get('money', '')
     
-    if(money >1000):
-        return "flag= nihaohaha"
+    if(money>1000):
+        return "ntcuCTF{logic_explosion}"
     else:
-        return "餘額不足"
+        return "交易失敗餘額不足!"
 
 #get me admin
     
@@ -74,7 +74,30 @@ def get_login():
     
     return "ERROR"
 
-#你是誰?
+# 無中生有
+
+@app.route('/zero',methods=['GET','POST'])
+def zero():
+    return render_template('zero.html')
+
+@app.route('/zero/login',methods=['GET','POST'])
+def zero_login():
+    user = request.values.get('username')
+    password = request.values.get('password')
+    auth = request.values.get('auth')
+    
+    if user=="guest" and password == "guest":
+        if auth=="true":
+            return render_template("zero_debug.html")
+        
+        return render_template("zero_guest.html")
+    
+    if user=="wsedhfiuwfbnwejfbwofnwqeou;heof2be3iofofief" and password == "wsedhfiuwfbnwejfbwofnwqeou;heof2be3iofofief":
+        return render_template('zero_admin.html')
+    
+
+
+#我是誰?
 
 @app.route('/who',methods=['GET'])
 def who():
@@ -106,7 +129,31 @@ def post_login():
     
     return "ERROR"
 
-# cookie
+# 讀一下人家的訊息(response)嘛
+
+@app.route('/res',methods=['GET'])
+def res():
+    return render_template('res.html')
+
+@app.route('/res/login',methods=['GET','POST'])
+def res_login():
+    user = request.values.get('username')
+    password = request.values.get('password')
+    auth = request.values.get('debug')
+    
+    if user=="guest" and password == "guest":
+        if auth=="1":
+            return render_template("res_debug.html")
+        
+        return render_template("res_guest.html")
+    
+    if user=="ophmp[rtomrtel;fgbmertpgbm3pi3'grqnmterogkd" and password == "ophmp[rtomrtel;fgbmertpgbm3pi3'grqnmterogkd":
+        return render_template('res_admin.html')
+    
+    return render_template('res_admin.html')
+
+
+# 好粗的cookie
 
 @app.route('/cookie',methods=['GET','POST'])
 def cookie():
@@ -146,14 +193,6 @@ def cookie_guest():
         return redirect("/cookie/admin") 
     else:
         return "ERROR!"
-
-'''
-@app.route('/img', methods=['GET'])
-def img():
-    if 'filename' in request.args:
-        return send_file('images/' + request.args['filename'])
-    return render_template('img.html')
-'''
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
