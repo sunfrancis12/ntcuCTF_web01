@@ -40,22 +40,6 @@ def hide1():
 def grab():
     return render_template('grab.html')
 
-# 邏輯炸裂
-
-@app.route('/logic')
-def count():
-    return render_template('logic_bomb.html')
-
-@app.route('/check', methods=['POST'])
-def flag1():
-    data = request.get_json()
-    money = data.get('money', '')
-    
-    if(money>1000):
-        return "ntcuCTF{logic_explosion}"
-    else:
-        return "交易失敗餘額不足!"
-
 #get me admin
     
 @app.route('/get',methods=['GET'])
@@ -150,7 +134,7 @@ def res_login():
     if user=="ophmp[rtomrtel;fgbmertpgbm3pi3'grqnmterogkd" and password == "ophmp[rtomrtel;fgbmertpgbm3pi3'grqnmterogkd":
         return render_template('res_admin.html')
     
-    return render_template('res_admin.html')
+    return render_template('res_unknown.html')
 
 
 # 好粗的cookie
@@ -193,6 +177,22 @@ def cookie_guest():
         return redirect("/cookie/admin") 
     else:
         return "ERROR!"
+    
+# 邏輯炸裂
+
+@app.route('/logic')
+def count():
+    return render_template('logic_bomb.html')
+
+@app.route('/check', methods=['POST'])
+def flag1():
+    data = request.get_json()
+    money = data.get('money', '')
+    
+    if(money>1000):
+        return "ntcuCTF{logic_explosion}"
+    else:
+        return "交易失敗餘額不足!"
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
