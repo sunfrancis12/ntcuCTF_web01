@@ -1,5 +1,5 @@
 # This is a [Flask](https://flask.palletsprojects.com/en/2.3.x/) based framework
-author [台中教育大學 白帽社](https://hackmd.io/@ntcuhack/index) -sunfrancis12
+Author: [台中教育大學 白帽社](https://hackmd.io/@ntcuhack/index) -sunfrancis12
 ## How to download:
 git clone it from github
 ```bash
